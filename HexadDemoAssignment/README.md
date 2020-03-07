@@ -1,7 +1,5 @@
 
-//Demo Application for Hexad Gmbh
-
- Assignment for iOS Developer
+//Demo Application
 
  1. Pick your top 10+ fav books, movies, video games, food, or
  whatever you wish. Build an iOS app using the Swift programming
