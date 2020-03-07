@@ -76,6 +76,20 @@ class HexadDemoAssignmentTests: XCTestCase {
         
         XCTAssertTrue(((viewContoller?.viewModel.model?.itemlist?.first?.rating ?? 0.0) > (viewContoller?.viewModel.model?.itemlist?.last?.rating ?? 0.0)))
     }
+    
+    func testJSONResponseAsyncTest() {
+        let expectation = self.expectation(description: "test json")
+        var result: Bool?
+        XCTAssertNil(viewContoller?.viewModel.model)
+        viewContoller?.viewModel.getListData(completion: { (isSuccess, responseCode, message) in
+            result = isSuccess
+            expectation.fulfill()
+        })
+        waitForExpectations(timeout: 10)
+        
+        XCTAssertNotNil(viewContoller?.viewModel.model)
+        XCTAssertTrue(result ?? false)
+    }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
