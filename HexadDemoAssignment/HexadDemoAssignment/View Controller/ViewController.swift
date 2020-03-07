@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     var randomTimer: Timer?
     var isTimerOn = false
     
+    @IBOutlet weak var dropDownButton: UIButton!
+    @IBOutlet weak var randomRatingButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -61,7 +64,9 @@ class ViewController: UIViewController {
     
     @IBAction func dropDownButtonAction(_ sender: Any) {
         isExpand = !(isExpand ?? false)
-        self.tableView.reloadSections(IndexSet(integer: 0), with: .bottom)
+        DispatchQueue.main.async {
+            self.tableView.reloadSections(IndexSet(integer: 0), with: .bottom)
+        }
     }
     
     deinit {
@@ -124,16 +129,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
 //MARK: RatingButtonActionDelegate
 extension ViewController: RatingButtonActionDelegate {
-    func changeRating(tag: Int, cell: ItemsListTableViewCell) {
+    func changeRating(tag: ListViewModel.Rate, cell: ItemsListTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell),
             let modelData = viewModel.model?.itemlist {
             switch tag {
-            case ListViewModel.Rate.increment.rawValue:
+            case ListViewModel.Rate.increment:
                 viewModel.model?.itemlist?[indexPath.row].rating = (modelData[indexPath.row].rating ?? 0.0) + 0.5
-            case ListViewModel.Rate.decrement.rawValue:
+            case ListViewModel.Rate.decrement:
                 viewModel.model?.itemlist?[indexPath.row].rating = (modelData[indexPath.row].rating ?? 0.0) - 0.5
-            default:
-                break
             }
             viewModel.filterData(dropDownRow: currentlySelectedFilter)
             DispatchQueue.main.async {

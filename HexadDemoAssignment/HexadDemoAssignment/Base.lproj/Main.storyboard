@@ -12,10 +12,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--ViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HexadDemoAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="HexadDemoAssignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ksw-L9-C11">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,7 +209,9 @@
                         <viewLayoutGuide key="safeArea" id="e3Z-Bu-Ibq"/>
                     </view>
                     <connections>
+                        <outlet property="dropDownButton" destination="dGM-dj-0AF" id="nWA-gB-iRt"/>
                         <outlet property="filterTypeLabel" destination="hNZ-0x-gE7" id="bMD-ZZ-e7g"/>
+                        <outlet property="randomRatingButton" destination="FmS-Ll-z6O" id="xtL-Rq-aO7"/>
                         <outlet property="tableView" destination="Wtx-lz-Nvv" id="t4r-XI-LyG"/>
                     </connections>
                 </viewController>

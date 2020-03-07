@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol RatingButtonActionDelegate: class{
-    func changeRating(tag: Int, cell: ItemsListTableViewCell)
+    func changeRating(tag: ListViewModel.Rate, cell: ItemsListTableViewCell)
 }
 
 class ItemsListTableViewCell: UITableViewCell {
@@ -26,9 +26,9 @@ class ItemsListTableViewCell: UITableViewCell {
     
     @IBAction func buttonAction(_ sender: Any) {
         if (sender as? UIButton)?.tag == 0 {
-            delegate?.changeRating(tag: 0, cell: self)
+            delegate?.changeRating(tag: ListViewModel.Rate.increment, cell: self)
         } else if (sender as? UIButton)?.tag == 1 {
-            delegate?.changeRating(tag: 1, cell: self)
+            delegate?.changeRating(tag: ListViewModel.Rate.decrement, cell: self)
         }
     }
     
